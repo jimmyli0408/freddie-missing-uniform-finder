@@ -24,7 +24,14 @@ public class MessageProcessor {
         this.fileParser = new FileParser();
     }
 
-
+    /**
+     * @param name file path to read file
+     * Processes the file content:
+     * 1. Reads the file lines.
+     * 2. Parses the grid.
+     * 3. Decodes the fold instructions.
+     * 4. Print the final state of the gird.
+     */
     public void process(String name) throws IOException {
         List<String> lines = fileParser.readFile(name);
         Grid grid = fileParser.parseGrid(lines);
@@ -32,6 +39,10 @@ public class MessageProcessor {
         printFinalGrid(grid);
     }
 
+    /**
+     * @param lines instructions read from file
+     * Executes the decoding based on the fold instructions present in the lines
+     */
     private void executeDecode(Grid grid, List<String> lines) {
         lines.stream()
                 .filter(line -> line.contains("fold"))
@@ -48,7 +59,11 @@ public class MessageProcessor {
                 });
     }
 
-
+    /**
+     * Prints the final state of the grid.
+     * An 'empty' space is represented by a blank character,
+     * and a 'marked' space is represented by the MARKED character.
+     */
     private void printFinalGrid(Grid grid) {
         Set<Pair> markedPoints = grid.getMarkedPoints();
         int xSize = grid.getX() + 1;

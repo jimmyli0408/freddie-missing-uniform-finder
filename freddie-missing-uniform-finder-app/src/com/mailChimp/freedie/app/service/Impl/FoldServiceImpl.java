@@ -23,6 +23,10 @@ public class FoldServiceImpl implements DecodeService {
         foldProcess(grid, foldLineNum, maxX, false);
     }
 
+    /**
+     * Core folding logic that determines the new state of the grid
+     * based on the fold direction and the fold line number.
+     */
     private void foldProcess(Grid grid, int foldLineNum, int maxCord, boolean isUp) {
         Set<Pair> markedPoints = grid.getMarkedPoints();
         Set<Pair> foldedPoints = new HashSet<>();
