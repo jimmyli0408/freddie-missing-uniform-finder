@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-
+        // Define the path to the resources folder containing the files to process
         Path folderPath = Paths.get("./resources");
         MessageProcessor messageProcessor = new MessageProcessor(new FoldServiceImpl());
 
@@ -20,6 +20,7 @@ public class Main {
             paths.filter(Files::isRegularFile)
                     .forEach( file -> {
                         try {
+                            // Process each file and perform the decoding operations
                             messageProcessor.process(file.toString());
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -27,6 +28,7 @@ public class Main {
                     });
 
         }catch (IOException e) {
+            System.out.println("Fail to get files from the resources fold. Please check the File path");
             e.printStackTrace();
         }
 
