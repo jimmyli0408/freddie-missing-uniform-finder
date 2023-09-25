@@ -1,12 +1,10 @@
 import com.mailChimp.freedie.app.processor.MessageProcessor;
 import com.mailChimp.freedie.app.service.Impl.FoldServiceImpl;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
 import java.util.stream.Stream;
 
 public class Main {
